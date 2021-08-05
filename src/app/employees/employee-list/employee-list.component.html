@@ -1,0 +1,135 @@
+<div class="main">
+<div class="content">
+
+  <div class="header">
+    <div class="logo">
+      GENRO <br>
+      <span>LIMS</span>
+    </div>
+    <div class="header_line_1"></div>
+    <div class="user_info">
+      <div class="user_photo">
+        <img src="./assets/image/user_photo.svg" alt="">
+      </div>
+      <div class="user_profile">
+        Сергей Сергеев <br>
+        <span>Заведующий</span>  <br>
+        <span class="date">
+                    {{date | date:'medium'}}
+                </span>
+      </div>
+    </div>
+    <div class="header_line_2"></div>
+    <div class="stat">
+      <button>Статистика</button>
+    </div>
+    <div class="settings">
+      <img src="./assets//image//settings.svg" alt="">
+      <span>Настройки</span>
+    </div>
+    <div class="exit">
+      <img src="./assets/image/exit.svg" alt="">
+      <span>Выход</span>
+    </div>
+  </div>
+  <div class="body">
+    <div class="actions">
+      <div class="add_requst">
+        <button (click)="onCreate()">
+          <img src="./assets/image/add_request.svg" alt="">
+          <p>Создать заявку</p>
+        </button>
+      </div>
+      <div class="download">
+        <button>
+          <img src="./assets/image/magazin.svg" alt="">
+          <p>Скачать журнал</p>
+        </button>
+      </div>
+      <div class="applications">
+        <button matBadge="3" matBadgeOverlap="true" matBadgeColor="warn">
+          <img src="./assets/image/applications.svg" alt="">
+          <p>Мои заявки</p>
+        </button>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="listData" matSort>
+          <ng-container matColumnDef="sample">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> № пробы </th>
+            <td mat-cell *matCellDef="let row">
+              <div class="sample-container">
+                <div class="sample-text">НТ-30</div>
+                <div class="sample-btn">
+                  <button (click)="onEdit(row)"><img src="./assets/image/info.svg" alt=""></button>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="fio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Исполнители </th>
+            <td mat-cell *matCellDef="let element"> {{element.fio}} </td>
+          </ng-container>
+          <ng-container matColumnDef="field">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Месторождение </th>
+            <td mat-cell *matCellDef="let element"> {{element.field}} </td>
+          </ng-container>
+          <ng-container matColumnDef="wellNum">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> № скважины </th>
+            <td mat-cell *matCellDef="let element"> {{element.wellNum}} </td>
+          </ng-container>
+          <ng-container matColumnDef="interval">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Интервал перфорации </th>
+            <td mat-cell *matCellDef="let element"> {{element.interval}} </td>
+          </ng-container>
+          <ng-container matColumnDef="depth">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Глубина </th>
+            <td mat-cell *matCellDef="let element"> {{element.depth}} </td>
+          </ng-container>
+          <ng-container matColumnDef="horizont">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Горизонт </th>
+            <td mat-cell *matCellDef="let element"> {{element.horizont}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dateOtb">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата отбора </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOtb}} </td>
+          </ng-container>
+          <ng-container matColumnDef="datePos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата поступления </th>
+            <td mat-cell *matCellDef="let element"> {{element.datePos}} </td>
+          </ng-container>
+          <ng-container matColumnDef="lab">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Лаборатория </th>
+            <td mat-cell *matCellDef="let row">ЛИНГиВ</td>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Статус </th>
+            <td mat-cell *matCellDef="let row">Новая</td>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Вид анализа </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
+          <ng-container matColumnDef="buttons">
+            <th mat-header-cell *matHeaderCellDef> Отчет </th>
+            <td class="cell_btn" mat-cell *matCellDef="let row">
+              <a class="report_btn" href="#">Отчет</a>
+              <a class="protocol_btn" href="#">Протокол</a>
+              <a class="research_btn" href="#">Исследование</a>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons [pageSize]="10" [hidePageSize]="true"></mat-paginator>
+      </div>
+    </div>
+    <div class="footer">
+      Copyright © 1996–2019 Genro Lims™. Все права защищены.
+    </div>
+  </div>
+</div>
+</div>
+

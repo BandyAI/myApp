@@ -1,0 +1,146 @@
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <div class="main">
+    <div class="request_header">
+      <span class="header_text">Заявка - №1</span>
+      <button mat-dialog-close class="header_btn" ><img src="./assets/image/Xclose.svg" alt=""></button>
+    </div>
+    <div class="body">
+      <input type="hidden" formControlName="$key">
+      <div class="customer_info">
+        <div class="customer_name">
+          <input formControlName="customerName" type="text" placeholder="Наименование заказчика">
+        </div>
+        <div class="bin">
+          <label for="bin">БИН<span>*</span></label>
+          <input type="text"  formControlName="bin" placeholder="2112321246674" id="bin">
+        </div>
+        <div class="orderNum">
+          <label for="orderNumber">№ договора<span>*</span></label>
+          <input type="text" formControlName="orderNumber" placeholder="1223" id="orderNumber">
+        </div>
+        <div class="end_date">
+          <label for="endDate">Дата планового завершения<span>*</span></label>
+          <div class="endDate">
+            <input type="text" formControlName="endDate" placeholder="10 ЯНВ 2019 г." id="endDate">
+          </div>
+        </div>
+        <hr>
+        <div class="apps">
+          <label>Приложения</label>
+          <button type="button">Прикрепить файл</button>
+        </div>
+      </div><!--./customer_info-->
+      <div class="order_info">
+        <mat-tab-group mat-align-tabs="start" [selectedIndex]="selected.value"
+                       (selectedIndexChange)="selected.setValue($event)">
+          <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab+ ' ' + (index + 1)">
+            <div class="form">
+              <div class="field">
+                <div class="field_text">
+                  <label for="field">Месторождение</label>
+                </div>
+                <div class="field_input">
+                  <input formControlName="field" placeholder="с. Бесагалы" id="field">
+                </div>
+              </div>
+              <div class="well_number">
+                <div class="well_text">
+                  <label for="wellNum">Номер скважины</label>
+                </div>
+                <div class="well_input">
+                  <input formControlName="wellNum" placeholder="191920" id="wellNum">
+                </div>
+              </div>
+              <div class="interval">
+                <div class="interval_text">
+                  <label>Интервал</label>
+                </div>
+                <div class="interval_input">
+                  <input formControlName="interval" placeholder="345"> - <input formControlName="interval" placeholder="345">
+                </div>
+                <div class="interval_btn">
+                  <button type="button"><img src="./assets/image/+.svg" alt=""></button>
+                </div>
+              </div>
+              <div class="depth">
+                <div class="depth_text">
+                  <label for="depth">Глубина</label>
+                </div>
+                <div class="depth_input">
+                  <input formControlName="depth" placeholder="191920" id="depth">
+                </div>
+              </div>
+              <div class="horizont">
+                <div class="horizont_text">
+                  <label for="horizont">Горизонт</label>
+                </div>
+                <div class="horizont_input">
+                  <input formControlName="horizont" placeholder="191920" id="horizont">
+                </div>
+              </div>
+              <div class="date_otb">
+                <div class="date_text">
+                  <label for="dateOtb">Дата отбора</label>
+                </div>
+                <div class="date_input">
+                  <input formControlName="dateOtb" placeholder="3 МАР 2019 г." id="dateOtb">
+                </div>
+              </div>
+              <div class="date_pos">
+                <div class="date_text">
+                  <label for="datePos">Дата поступления</label>
+                </div>
+                <div class="date_input1">
+                  <input formControlName="datePos" placeholder="3 МАР 2019 г." id="datePos">
+                </div>
+                <div class="date_button">
+                  <button type="button">Сканировать</button>
+                </div>
+              </div>
+              <div class="fio">
+                <div class="fio_text">
+                  <label for="fio">ФИО</label>
+                </div>
+                <div class="fio_input">
+                  <input formControlName="fio" placeholder="Фамилия Имя" id="fio">
+                </div>
+              </div>
+              <div class="position">
+                <div class="position_text">
+                  <label for="position">Должность</label>
+                </div>
+                <div class="position_input">
+                  <input formControlName="position" placeholder="Лаборант" id="position">
+                </div>
+              </div>
+              <div class="type">
+                <div class="type_text">
+                  <label for="type">Вид анализа</label>
+                </div>
+                <mat-radio-group formControlName="type">
+                  <div class="type_input">
+                    <div class="radio1">
+                      <mat-radio-button value="Полный физическо-химический анализ">Полный физическо-химический анализ</mat-radio-button>
+                    </div>
+                    <div class="radio2">
+                      <mat-radio-button value="Неполный физическо-химический анализ">Неполный физическо-химический анализ</mat-radio-button>
+                    </div>
+                  </div>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="button_row">
+              <div class="save_btn">
+                <button type="submit">Сохранить</button>
+              </div>
+              <div class="cancel_btn">
+                <button (click)="onClear()">Отменить</button>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div><!--./order_info-->
+
+    </div><!-- ./body -->
+  </div> <!-- ./main -->
+</form>
